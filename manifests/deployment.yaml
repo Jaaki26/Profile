@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: profile-deployment
+  labels:
+    app: profile-site
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: profile-site
+  template:
+    metadata:
+      labels:
+        app: profile-site
+    spec:
+      containers:
+      - name: profile-site
+        image: janakiram26/profile-site:latest   # <-- your Docker Hub image
+        ports:
+        - containerPort: 80
